@@ -1,37 +1,35 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Cards from "./components/card";
 import NavbarMain from "./components/navbar";
-import { noodlesActions } from "./redux";
 import "./scss/app.scss";
-import { Fetching } from "./utils/utils";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Countrybrand from "./components/countrybrand";
+import { noodlesActions } from "./redux";
+import { useDispatch } from "react-redux";
+import { Fetching, FetchingImages } from "./utils/utils";
 
 function App() {
-	const arrofobj = useSelector((state) => state.arrofobj);
 	const dispatch = useDispatch();
 	async function Putdatainstore() {
 		let newValue = await Fetching();
+		let newImages = await FetchingImages();
 		dispatch(noodlesActions.FirstAdditionofobj(newValue));
+		dispatch(noodlesActions.Uniquecountries());
+		dispatch(noodlesActions.AdditionOfImages(newImages));
 	}
+
 	useEffect(() => {
 		Putdatainstore();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-
-	console.table(arrofobj);
 	return (
 		<>
-			<NavbarMain />
-			<div className="container-fluid">
-				<div className="row">
-					{arrofobj.map((obj) => {
-						return (
-							<div className="col m-3">
-								<Cards obj={obj} />
-							</div>
-						);
-					})}
-				</div>
+			<div>
+				<Router>
+					<Routes>
+						<Route path="/" element={<NavbarMain />} exact />
+						<Route path="/:country" element={<Countrybrand />} />
+					</Routes>
+				</Router>
 			</div>
 		</>
 	);
