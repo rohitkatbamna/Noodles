@@ -1,0 +1,10 @@
+.card_all_of_it {
+	width: 18rem;
+	cursor: pointer;
+	border-radius: 20px;
+	&:hover {
+		box-shadow: 5px 10px;
+		margin-bottom: 3px;
+		transition: box-shadow 0.5s ease;
+	}
+}
