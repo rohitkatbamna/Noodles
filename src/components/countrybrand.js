@@ -14,8 +14,11 @@ function Countrybrand() {
 			countrybrand.push(arrofobj[i]);
 		}
 	}
-	console.log(countrybrand);
-
+	let brands = [];
+	for (let i = 0; i < countrybrand.length; i++) {
+		brands.push(countrybrand[i].Brand);
+	}
+	let uniquebrands = [...new Set(brands)];
 	return (
 		<div className="container-fluid">
 			<div className="row">
@@ -24,10 +27,10 @@ function Countrybrand() {
 				</div>
 			</div>
 			<div className="row">
-				{countrybrand.map((obj) => {
+				{uniquebrands.map((brands) => {
 					return (
 						<div className="col">
-							<Brandcard obj={obj} />
+							<Brandcard brands={brands} />
 						</div>
 					);
 				})}
