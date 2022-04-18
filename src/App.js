@@ -6,6 +6,7 @@ import Countrybrand from "./components/countrybrand";
 import { noodlesActions } from "./redux";
 import { useDispatch } from "react-redux";
 import { Fetching, FetchingImages } from "./utils/utils";
+import Variety from "./components/variety";
 
 function App() {
 	const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<NavbarMain />} exact />
 						<Route path="/:country" element={<Countrybrand />} />
+						<Route path="/:country/:variety" element={<Variety />} />
 					</Routes>
 				</Router>
 			</div>
