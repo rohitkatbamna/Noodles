@@ -11,6 +11,9 @@ function Variety() {
 		(obj) => obj.Country === params.country && obj.Brand === params.variety
 	);
 	console.log(filterObj);
+	const images = useSelector((state) => state.ImagesArray);
+	console.log(images);
+
 	return (
 		<div className="container-fluid">
 			<div className="row">
@@ -25,6 +28,11 @@ function Variety() {
 							<div
 								className="card ms-auto me-auto mt-5"
 								style={{ width: "18rem" }}>
+								<img
+									src={images[Math.floor(Math.random() * images.length)].Image}
+									className="card-img-top"
+									alt="Noodles"
+								/>
 								<div className="card-body">
 									<h4 className="fw-bold">{obj.Variety}</h4>
 								</div>
