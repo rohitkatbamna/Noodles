@@ -8,9 +8,15 @@ const givedata = {
 export async function Fetching() {
 	console.log("Begin Fetching");
 	let fetvalue = await fetch(url, givedata)
-		.then((response) => response.json())
+		.then((response) => {
+			return response;
+		})
 		.then((responseData) => {
-			return responseData;
+			return responseData.json();
+		})
+		.catch((err) => {
+			console.log(err);
+			return err;
 		});
 	return fetvalue;
 }

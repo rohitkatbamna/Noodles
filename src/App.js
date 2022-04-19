@@ -13,6 +13,7 @@ function App() {
 	const dispatch = useDispatch();
 	async function Putdatainstore() {
 		let newValue = await Fetching();
+		console.log(newValue);
 		let newImages = await FetchingImages();
 		dispatch(noodlesActions.FirstAdditionofobj(newValue));
 		dispatch(noodlesActions.Uniquecountries());
@@ -23,6 +24,7 @@ function App() {
 		Putdatainstore();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
 	return (
 		<>
 			<div>
