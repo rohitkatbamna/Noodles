@@ -7,6 +7,7 @@ import { noodlesActions } from "./redux";
 import { useDispatch } from "react-redux";
 import { Fetching, FetchingImages } from "./utils/utils";
 import Variety from "./components/variety";
+import PageNotFound from "./404page";
 
 function App() {
 	const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
 						<Route path="/" element={<NavbarMain />} exact />
 						<Route path="/:country" element={<Countrybrand />} />
 						<Route path="/:country/:variety" element={<Variety />} />
+						<Route path="/404" element={<PageNotFound />} />
 					</Routes>
 				</Router>
 			</div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import PageNotFound from "../404page";
 
 function Variety() {
 	const params = useParams();
@@ -13,7 +14,15 @@ function Variety() {
 	console.log(filterObj);
 	const images = useSelector((state) => state.ImagesArray);
 	console.log(images);
-
+	if (filterObj[0] === undefined) {
+		return (
+			<>
+				<div>
+					<PageNotFound />
+				</div>
+			</>
+		);
+	}
 	return (
 		<div className="container-fluid">
 			<div className="row">

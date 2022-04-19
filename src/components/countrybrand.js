@@ -2,17 +2,25 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Brandcard from "./Brandcard";
-
+import PageNotFound from "../404page";
 function Countrybrand() {
 	const params = useParams();
 	console.log(params);
 	const arrofobj = useSelector((state) => state.arrofobj);
-	console.log(arrofobj[1]);
 	let countrybrand = [];
 	for (let i = 0; i < arrofobj.length; i++) {
 		if (arrofobj[i].Country === params.country) {
 			countrybrand.push(arrofobj[i]);
 		}
+	}
+	if (countrybrand[0] === undefined) {
+		return (
+			<>
+				<div>
+					<PageNotFound />
+				</div>
+			</>
+		);
 	}
 	let brands = [];
 	for (let i = 0; i < countrybrand.length; i++) {
